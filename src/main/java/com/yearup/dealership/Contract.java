@@ -2,7 +2,7 @@ package com.yearup.dealership;
 
 import java.time.LocalDate;
 
-public class Contract {
+public  abstract class Contract {
     private LocalDate contractDate;
     private String customerName;
     private String customerEmail;
@@ -13,27 +13,43 @@ public class Contract {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
-    }
 
+    }
     public LocalDate getContractDate() {
         return contractDate;
+    }
+
+    public void setContractDate(LocalDate contractDate) {
+        this.contractDate = contractDate;
     }
 
     public String getCustomerName() {
         return customerName;
     }
 
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     public String getCustomerEmail() {
         return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     public Vehicle getVehicleSold() {
         return vehicleSold;
     }
 
+    public void setVehicleSold(Vehicle vehicleSold) {
+        this.vehicleSold = vehicleSold;
+    }
+
     // Abstract methods - must be implemented by subclasses
-//    public abstract double getTotalPrice();
-//    public abstract double getMonthlyPayment();
+   public abstract double getTotalPrice();
+    public abstract double getMonthlyPayment();
 
     @Override
     public String toString() {

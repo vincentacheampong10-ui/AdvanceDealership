@@ -52,10 +52,10 @@ public class SalesContract extends Contract {
         int months;
 
         if (price >= 10000) {
-            rate = 0.0425 / 12; // 4.25% annual → monthly
+            rate = 0.0425 / 12; // All loans are at 4.25% for 48 months if the price is $10,000 or more
             months = 48;
         } else {
-            rate = 0.0525 / 12; // 5.25% annual → monthly
+            rate = 0.0525 / 12; // Otherwise all loans are at 5.25% for 24 month
             months = 24;
         }
 

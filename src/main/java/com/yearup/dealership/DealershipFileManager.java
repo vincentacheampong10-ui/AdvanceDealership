@@ -7,8 +7,6 @@ import java.io.IOException;
 public class DealershipFileManager {
 
     public Dealership getDealership(){
-
-
         Dealership dealership = new Dealership(
                 "Year Up Motors",
                 "123 Main St, Columbus, OH",
