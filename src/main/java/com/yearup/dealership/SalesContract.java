@@ -16,24 +16,48 @@ public class SalesContract extends Contract {
         super(contractDate, customerName, customerEmail, vehicleSold);
         this.financeOption = financeOption;
 
-        // Compute fixed values
         double price = vehicleSold.getPrice();
         this.salesTaxAmount = price * 0.05; // 5%
-        this.processingFee = (price < 10000) ? 295 : 495;
+
+        //Processing Fee
+        if (price < 10000) {
+            this.processingFee = 295.0;
+        } else {
+            this.processingFee = 495.0;
+        }
     }
 
-    // Getters and setters
-    public double getSalesTaxAmount() { return salesTaxAmount; }
-    public void setSalesTaxAmount(double salesTaxAmount) { this.salesTaxAmount = salesTaxAmount; }
+    public double getSalesTaxAmount() {
+        return salesTaxAmount;
+    }
 
-    public double getRecordingFee() { return recordingFee; }
-    public void setRecordingFee(double recordingFee) { this.recordingFee = recordingFee; }
+    public void setSalesTaxAmount(double salesTaxAmount) {
+        this.salesTaxAmount = salesTaxAmount;
+    }
 
-    public double getProcessingFee() { return processingFee; }
-    public void setProcessingFee(double processingFee) { this.processingFee = processingFee; }
+    public double getRecordingFee() {
+        return recordingFee;
+    }
 
-    public boolean isFinanceOption() { return financeOption; }
-    public void setFinanceOption(boolean financeOption) { this.financeOption = financeOption; }
+    public void setRecordingFee(double recordingFee) {
+        this.recordingFee = recordingFee;
+    }
+
+    public double getProcessingFee() {
+        return processingFee;
+    }
+
+    public void setProcessingFee(double processingFee) {
+        this.processingFee = processingFee;
+    }
+
+    public boolean isFinanceOption() {
+        return financeOption;
+    }
+
+    public void setFinanceOption(boolean financeOption) {
+        this.financeOption = financeOption;
+    }
 
     @Override
     public double getTotalPrice() {
@@ -47,6 +71,7 @@ public class SalesContract extends Contract {
             return 0.0; // No financing
         }
 
+        //  Monthly payment (if financed) based on:
         double price = getTotalPrice();
         double rate;
         int months;

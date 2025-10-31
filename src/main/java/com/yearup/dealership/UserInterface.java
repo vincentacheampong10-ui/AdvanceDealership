@@ -1,12 +1,18 @@
 package com.yearup.dealership;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
     private Scanner scanner = new Scanner(System.in);
 
+    public UserInterface() {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        this.dealership = dealershipFileManager.getDealership();
+    }
 
     public void display() {
 
@@ -15,33 +21,6 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         this.dealership = dealershipFileManager.getDealership();
 
-        this.dealership = new Dealership(
-                "Year Up Motors",
-                "123 Main St, Columbus, OH",
-                "614-555-1212"
-        );
-
-        // Add 10 vehicles to the dealership's inventory
-        dealership.addVehicle(new Vehicle(1001, 2020, "Toyota", "Camry", "Sedan", "Silver", 32000, 18995.00));
-        dealership.addVehicle(new Vehicle(1002, 2019, "Honda", "Civic", "Sedan", "Blue", 45000, 15995.00));
-        dealership.addVehicle(new Vehicle(1003, 2021, "Ford", "F-150", "Truck", "Red", 25000, 29995.00));
-        dealership.addVehicle(new Vehicle(1004, 2018, "Chevrolet", "Equinox", "SUV", "White", 60000, 17495.00));
-        dealership.addVehicle(new Vehicle(1005, 2022, "Tesla", "Model 3", "Sedan", "Black", 12000, 35995.00));
-        dealership.addVehicle(new Vehicle(1006, 2017, "Subaru", "Outback", "Wagon", "Green", 78000, 13995.00));
-        dealership.addVehicle(new Vehicle(1007, 2020, "Jeep", "Wrangler", "SUV", "Orange", 31000, 28995.00));
-        dealership.addVehicle(new Vehicle(1008, 2019, "BMW", "X5", "SUV", "Gray", 50000, 33995.00));
-        dealership.addVehicle(new Vehicle(1009, 2021, "Hyundai", "Elantra", "Sedan", "White", 18000, 17995.00));
-        dealership.addVehicle(new Vehicle(1010, 2018, "Nissan", "Altima", "Sedan", "Blue", 67000, 13995.00));
-
-
-        // Print all vehicles in the inventory
-        System.out.println("Inventory for " + dealership.getAllVehicles().size() + " vehicles at " + dealership.getAllVehicles());
-        System.out.println("Dealership Inventory:\n");
-
-        for (Vehicle vehicle : dealership.getAllVehicles()) {
-            System.out.println(vehicle);
-            System.out.println("---------------------------");
-        }
     }
 
     public void displayMenu() {
@@ -59,12 +38,86 @@ public class UserInterface {
             System.out.println("8 - Add a vehicle");
             System.out.println("9 - Remove a vehicle");
             System.out.println("99 - Quit");
-            System.out.print("Enter your choice: ");
-
+            System.out.print("Enter your choice:");
             String choice = scanner.nextLine();
+
+            switch (choice) {
+
+                case "1":
+                    findVehiclesByPrice();
+                    break;
+                case "2":
+
+                    break;
+                case "3":
+
+                    break;
+                case "4":
+
+                    break;
+                case "5":
+
+                    break;
+                case "6":
+
+                    break;
+                case "7":
+
+                    break;
+                case "8":
+
+                    break;
+                case "9":
+
+                    break;
+                case "99":
+                    System.out.println("Exiting... Saving changes to file.");
+
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+
+    // Option 1: Price range
+    private void findVehiclesByPrice() {
+        try {
+            System.out.print("Enter minimum price:$");
+            double min = Double.parseDouble(scanner.nextLine());
+            System.out.print("Enter maximum price:$");
+            double max = Double.parseDouble(scanner.nextLine());
+
+
+            List<Vehicle> results = new ArrayList<>();
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
+                    results.add(vehicle);
+                }
+            }
+
+            displayVehicles(results);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+        }
+    }
+
+    private void displayVehicles(List<Vehicle> vehicleList) {
+        if (vehicleList.isEmpty()) {
+            System.out.println("--- No vehicles found ---");
+            return;
+        }
+
+        System.out.println("\n--- Found " + vehicleList.size() + " vehicle(s) ---");
+        for (Vehicle vehicle : vehicleList) {
+            System.out.println(vehicle);
+            System.out.println("-----------------------------");
         }
     }
 }
+
+
 
 
 
