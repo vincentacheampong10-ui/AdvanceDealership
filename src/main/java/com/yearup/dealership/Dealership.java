@@ -14,38 +14,46 @@ public class Dealership {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.inventory = new ArrayList<>(); // ← IMPORTANT!
     }
 
     public Dealership() {
 
     }
 
-    public List<Vehicle> getVehiclesByPrice( double min , double max) {
+    public List<Vehicle> getVehiclesByPrice(double min, double max) {
         return null;
     }
-    public List<Vehicle> getVehiclesByMakeModel(String make,String model) {
 
+    public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        return null;
     }
+
     public List<Vehicle> getVehiclesByYear() {
-
+        return null;
     }
+
     public List<Vehicle> getVehiclesByColor() {
-
+        return null;
     }
+
     public List<Vehicle> getVehiclesByMileage() {
-
+        return null;
     }
+
     public List<Vehicle> getVehiclesByType() {
-
+        return null;
     }
-    public List<Vehicle> getAllVehicles() {
 
+    public List<Vehicle> getAllVehicles() {
+        return inventory;
     }
 
     public void addVehicle(Vehicle vehicle) {
 
     }
-    public void removeVehicle(vehicle vehicle) {
+
+    public void removeVehicle(Vehicle vehicle) {
 
     }
 }

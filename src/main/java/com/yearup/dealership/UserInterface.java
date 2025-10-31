@@ -1,15 +1,20 @@
 package com.yearup.dealership;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-public class DealershipFileManager {
+import java.util.Scanner;
 
-    public Dealership getDealership(){
+public class UserInterface {
+    private Dealership dealership;
+    private Scanner scanner = new Scanner(System.in);
 
 
-        Dealership dealership = new Dealership(
+    public void display() {
+
+        System.out.println("Dealership App");
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+
+        this.dealership = new Dealership(
                 "Year Up Motors",
                 "123 Main St, Columbus, OH",
                 "614-555-1212"
@@ -27,6 +32,18 @@ public class DealershipFileManager {
         dealership.addVehicle(new Vehicle(1009, 2021, "Hyundai", "Elantra", "Sedan", "White", 18000, 17995.00));
         dealership.addVehicle(new Vehicle(1010, 2018, "Nissan", "Altima", "Sedan", "Blue", 67000, 13995.00));
 
-        return dealership;
+
+        // Print all vehicles in the inventory
+        System.out.println("Inventory for " + dealership.getAllVehicles().size() + " vehicles at " + dealership.getAllVehicles());
+        System.out.println("Dealership Inventory:\n");
+
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            System.out.println(vehicle);
+            System.out.println("---------------------------");
+        }
     }
 }
+
+
+
+
